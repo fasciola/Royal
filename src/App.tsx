@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import RainOnGlass from "./components/RainOnGlass";
 import { 
   ShoppingBag, 
   Menu, 
@@ -359,6 +360,7 @@ export default function App() {
         </p>
       </div>
 
+      <RainOnGlass />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* 3. Luxury Navigation Bar */}

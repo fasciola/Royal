@@ -1,3 +1,19 @@
+// 📦 Import images at the top (Vite will process these)
+import casablancaImg from './assets/images/casablanca_perfume_1779729961655.png';
+import roseKashanImg from './assets/images/rose_kashan_perfume_1779729946168.png';
+import blackDiamondImg from './assets/images/black_diamond_perfume_1779729913471.png';
+import imperialImg from './assets/images/imperial.png';
+import no5AvenueGoldImg from './assets/images/no5_avenue_gold_perfume_1779729877047.png';
+import blackCrystalImg from './assets/images/black_crystal_perfume_1779729893080.png';
+import kilimanjaroImg from './assets/images/kilimanjaro_blue_perfume_1779729861855.png';
+import royalSilverImg from './assets/images/royal_silver_perfume_1779729846295.png';
+import goldenOudImg from './assets/images/golden_oud_perfume_1779729828940.png';
+import decisionImg from './assets/images/decision_perfume_1779729931290.png';
+import hamsahShougImg from './assets/images/vetiver_precieux_perfume_1779729989073.png';
+import royalMuskImg from './assets/images/Royal_Musk.png';
+import bandarFleurImg from './assets/images/BANDAR.png';
+import sandalImg from './assets/images/SANDAL.png';
+
 export interface Product {
   id: number;
   name: string;
@@ -26,7 +42,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "An exotic essence inspired by timeless romantic landscapes.",
     descriptionAr: "جوهر غريب مستوحى من المناظر الطبيعية الرومانسية الخالدة.",
-    src: "/src/assets/images/casablanca_perfume_1779729961655.png",
+    src: casablancaImg, // ✅ Use imported variable
     notes: [],
     notesAr: []
   },
@@ -41,7 +57,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "A delicate tribute to the historic fields of Rose Kashan.",
     descriptionAr: "تحية رقيقة لحقول ورد كاشان التاريخية العريقة.",
-    src: "/src/assets/images/rose_kashan_perfume_1779729946168.png",
+    src: roseKashanImg,
     notes: [],
     notesAr: []
   },
@@ -56,7 +72,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "Bold, rich, and dark, symbolizing unyielding luxury.",
     descriptionAr: "جريء وغني وداكن، يرمز إلى الفخامة والوقار المطلق.",
-    src: "/src/assets/images/black_diamond_perfume_1779729913471.png",
+    src: blackDiamondImg,
     notes: [],
     notesAr: []
   },
@@ -71,7 +87,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "A prestigious formulation reserved for the modern connoisseur.",
     descriptionAr: "تركيبة مرموقة محفوظة لخبراء الرقي والفخامة المعاصرة.",
-    src: "/src/assets/images/imperial.png",
+    src: imperialImg,
     notes: [],
     notesAr: []
   },
@@ -86,7 +102,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "A glittering presentation of pure golden luxury and elegance.",
     descriptionAr: "عرض متلألئ من الفخامة الذهبية الخالصة والأناقة الساحرة.",
-    src: "/src/assets/images/no5_avenue_gold_perfume_1779729877047.png",
+    src: no5AvenueGoldImg,
     notes: [],
     notesAr: []
   },
@@ -101,7 +117,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "Deep, pristine, and beautifully multifaceted charm.",
     descriptionAr: "عميق، نقي، وسحر يفيض بالجاذبية متعددة الأبعاد.",
-    src: "/src/assets/images/black_crystal_perfume_1779729893080.png",
+    src: blackCrystalImg,
     notes: [],
     notesAr: []
   },
@@ -116,7 +132,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "Inspired by the high, refreshing peaks of Kilimanjaro.",
     descriptionAr: "مستوحى من القمم العالية والمنعشة لجبل كليمنجارو الساحر.",
-    src: "/src/assets/images/kilimanjaro_blue_perfume_1779729861855.png",
+    src: kilimanjaroImg,
     notes: [],
     notesAr: []
   },
@@ -131,7 +147,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "Refined and bright metallic luster that commands presence.",
     descriptionAr: "بريق معدني مشرق ومصقول يفرض طابع الحضور والجمال.",
-    src: "/src/assets/images/royal_silver_perfume_1779729846295.png",
+    src: royalSilverImg,
     notes: [],
     notesAr: []
   },
@@ -146,7 +162,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "The timeless warm golden glow of premium luxury oud.",
     descriptionAr: "التوهج الذهبي الدافئ والخالد لدهن العود الفاخر والعتيق.",
-    src: "/src/assets/images/golden_oud_perfume_1779729828940.png",
+    src: goldenOudImg,
     notes: [],
     notesAr: []
   },
@@ -161,7 +177,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "A decisive, powerful statement fragrance for ambitious minds.",
     descriptionAr: "عطر حاسم وقوي يمثل الهيبة والوقار للشخصيات الطموحة.",
-    src: "/src/assets/images/decision_perfume_1779729931290.png",
+    src: decisionImg,
     notes: [],
     notesAr: []
   },
@@ -176,7 +192,7 @@ export const PRODUCTS: Product[] = [
     price: 100,
     description: "A tender whisper of affection translated into an olfactory embrace.",
     descriptionAr: "همسة رقيقة من المودة والجاذبية تترجم في رداء عطري دافئ.",
-    src: "/src/assets/images/vetiver_precieux_perfume_1779729989073.png",
+    src: hamsahShougImg,
     notes: [],
     notesAr: []
   },
@@ -191,7 +207,7 @@ export const PRODUCTS: Product[] = [
     price: 100,
     description: "Pristine white musk fit for royalty and noble presences.",
     descriptionAr: "المسك الأبيض الصافي والنقي المصمم لأصحاب الوقار والهيبة الملكية.",
-    src: "/src/assets/images/Royal_Musk.png",
+    src: royalMuskImg,
     notes: [],
     notesAr: []
   },
@@ -206,7 +222,7 @@ export const PRODUCTS: Product[] = [
     price: 50,
     description: "A fresh floral bouquet of unmatched modern grace.",
     descriptionAr: "باقة زهور طبيعية منعشة تعبر عن النعومة والأناقة العصرية.",
-    src: "/src/assets/images/BANDAR.png",
+    src: bandarFleurImg,
     notes: [],
     notesAr: []
   },
@@ -221,7 +237,7 @@ export const PRODUCTS: Product[] = [
     price: 60,
     description: "Deep, warm, and creamy sandalwood of legendary distinction.",
     descriptionAr: "خشب صندل عتيد، عميق، دافئ وكريمي بمستوى تميز وتفرد أسطوري.",
-    src: "/src/assets/images/SANDAL.png",
+    src: sandalImg,
     notes: [],
     notesAr: []
   }

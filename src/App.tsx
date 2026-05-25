@@ -478,7 +478,7 @@ export default function App() {
             className="absolute inset-0 w-full h-full object-cover z-0"
             poster="/hero-fallback.jpg"   // optional fallback image
           >
-            <source src="/src/assets/videos/hero-background.mp4" type="video/mp4" />
+            <source src="/videos/hero-background.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 

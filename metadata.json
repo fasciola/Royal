@@ -1,0 +1,6 @@
+{
+  "name": "Royal Dan",
+  "description": "Luxury perfume e-commerce experience showcasing bestselling fragrances with glassmorphic design and ambient rain effects.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

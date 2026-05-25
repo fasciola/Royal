@@ -467,32 +467,51 @@ export default function App() {
           </div>
         )}
 
-        {/* 5. Luxury Display Hero Banner Section */}
-        <section className="py-24 md:py-36 text-center flex flex-col items-center relative z-20">
-          <span className="text-[10px] tracking-[0.35em] text-gold uppercase font-light mb-3 block animate-pulse">
-            {t.subtitle}
-          </span>
-          <h2 className="font-serif text-5xl md:text-8xl tracking-[0.05em] text-white font-light uppercase leading-none drop-shadow-xl select-all">
-            {t.titleMain}
-          </h2>
-          <div className="w-12 h-[1px] bg-gold/45 my-8" />
-          <p className="font-garamond text-lg md:text-2xl text-white/80 tracking-wide max-w-2xl font-light italic leading-relaxed">
-            {t.taglineSubtitle}
-          </p>
+        {/* 5. Luxury Display Hero Banner Section with video background */}
+        <section className="relative w-full overflow-hidden rounded-2xl my-8" style={{ minHeight: '80vh' }}>
+          {/* Background video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+            poster="/hero-fallback.jpg"   // optional fallback image
+          >
+            <source src="/src/assets/videos/hero-background.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <a 
-              href="#products" 
-              className="px-8 py-3.5 bg-gradient-to-r from-gold via-gold-light to-gold border border-gold/40 hover:bg-gold-light text-burgundy-dark font-medium rounded text-xs tracking-[0.25em] uppercase shadow-lg shadow-gold/5 hover:shadow-gold/15 transition-all duration-300 transform hover:scale-[1.02]"
-            >
-              {t.navTrunk}
-            </a>
-            <a 
-              href="#bespoke" 
-              className="px-8 py-3.5 border border-white/10 hover:border-gold/40 bg-white/5 hover:bg-gold/5 text-white hover:text-gold-light rounded text-xs tracking-[0.25em] uppercase transition-all duration-300"
-            >
-              {t.navBespoke}
-            </a>
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-burgundy-deep/70 via-burgundy-dark/60 to-burgundy-dark/80 z-[1]" />
+
+          {/* Hero content – sits above the video */}
+          <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-24 md:py-36 h-full">
+            <span className="text-[10px] tracking-[0.35em] text-gold uppercase font-light mb-3 block animate-pulse">
+              {t.subtitle}
+            </span>
+            <h2 className="font-serif text-5xl md:text-8xl tracking-[0.05em] text-white font-light uppercase leading-none drop-shadow-xl select-all">
+              {t.titleMain}
+            </h2>
+            <div className="w-12 h-[1px] bg-gold/45 my-8" />
+            <p className="font-garamond text-lg md:text-2xl text-white/80 tracking-wide max-w-2xl font-light italic leading-relaxed">
+              {t.taglineSubtitle}
+            </p>
+
+            <div className="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+              <a 
+                href="#products" 
+                className="px-8 py-3.5 bg-gradient-to-r from-gold via-gold-light to-gold border border-gold/40 hover:bg-gold-light text-burgundy-dark font-medium rounded text-xs tracking-[0.25em] uppercase shadow-lg shadow-gold/5 hover:shadow-gold/15 transition-all duration-300 transform hover:scale-[1.02]"
+              >
+                {t.navTrunk}
+              </a>
+              <a 
+                href="#bespoke" 
+                className="px-8 py-3.5 border border-white/10 hover:border-gold/40 bg-white/5 hover:bg-gold/5 text-white hover:text-gold-light rounded text-xs tracking-[0.25em] uppercase transition-all duration-300"
+              >
+                {t.navBespoke}
+              </a>
+            </div>
           </div>
         </section>
 

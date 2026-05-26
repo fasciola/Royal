@@ -86,7 +86,7 @@ const TRANSLATIONS = {
     navHome: "Home",
     navTrunk: "Fragrances",
     navStory: "Heritage",
-    navBespoke: "Atelier",
+    navBespoke: "TikTok",
     navContact: "Boutique",
     titleMain: "ROYAL DAN",
     tagline: "HAUTE PARFUMERIE",
@@ -132,7 +132,7 @@ const TRANSLATIONS = {
     linkCollection: "Our Fragrance Trunk",
     linkHeritage: "Brand Heritage",
     linkLocator: "Store Locator",
-    linkBespoke: "Bespoke Atelier Booking",
+    linkBespoke: "Follow on TikTok",
     linkShipping: "Exclusive Shipping Policy",
     linkRefund: "Refund & Return Protocol",
     linkStockists: "Stockists Directory",
@@ -153,7 +153,11 @@ const TRANSLATIONS = {
     removedFromTrunk: "Removed from Scent Trunk",
     quantityUpdated: "Quantity updated",
     bookingInquirySent: "Atelier booking inquiry dispatched via WhatsApp concierge",
-    vipBookingToast: "Connecting to royal atelier concierge ledger..."
+    vipBookingToast: "Connecting to royal atelier concierge ledger...",
+    tiktokTitle: "Follow Our Scent Journey",
+    tiktokDesc: "Discover the art of Royal Dan through our exclusive TikTok creations. Watch behind‑the‑scenes craftsmanship, fragrance stories, and new drops.",
+    tiktokFollowBtn: "Follow @royal_dan",
+    tiktokWatchLabel: "Featured Videos",
   },
   ar: {
     languageName: "English",
@@ -162,7 +166,7 @@ const TRANSLATIONS = {
     navHome: "الرئيسية",
     navTrunk: "العطور",
     navStory: "تراثنا",
-    navBespoke: "الورشة",
+    navBespoke: "تيك توك",
     navContact: "البوتيك",
     titleMain: "رويال دان",
     tagline: "العطور الفاخرة",
@@ -208,7 +212,7 @@ const TRANSLATIONS = {
     linkCollection: "خزانة العطور الكاملة",
     linkHeritage: "إرث وتراث الدار",
     linkLocator: "موقع البوتيك الفعلي",
-    linkBespoke: "حجز جلسات الأتيليه",
+    linkBespoke: "تابعنا على تيك توك",
     linkShipping: "سياسة الشحن الحصرية",
     linkRefund: "بروتوكول الاسترجاع والتبديل",
     linkStockists: "دليل الموزعين المعتمدين",
@@ -229,7 +233,11 @@ const TRANSLATIONS = {
     removedFromTrunk: "تمت إزالة العطر من الخزانة",
     quantityUpdated: "تم تحديث كمية المنتج",
     bookingInquirySent: "تم إرسال طلب حجز الأتيليه لعلاقات العملاء عبر الواتساب",
-    vipBookingToast: "يرجى الانتظار، جاري توصيلك بسجل كونسيرج البلاط الملكي..."
+    vipBookingToast: "يرجى الانتظار، جاري توصيلك بسجل كونسيرج البلاط الملكي...",
+    tiktokTitle: "تابع رحلتنا العطرية",
+    tiktokDesc: "اكتشف فن رويال دان من خلال إبداعاتنا الحصرية على تيك توك. شاهد كواليس الصناعة، قصص العطور، والإصدارات الجديدة.",
+    tiktokFollowBtn: "تابع @royal_dan",
+    tiktokWatchLabel: "الفيديوهات المميزة",
   }
 };
 
@@ -239,6 +247,16 @@ export default function App() {
   const [lang, setLang] = useState<"en" | "ar">("en");
   const isAr = lang === "ar";
   const t = TRANSLATIONS[lang];
+
+  // 🎥 Array of your TikTok video IDs – add as many as you like
+  const tiktokVideoIds = [
+    "7637948977043852551",   // first video
+    "7642682813908552978", 
+    "7641929674813345044",
+    "7641666186127658247",
+    "7599008083108482322",
+    "7638701973054737671",
+  ];
 
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [cartOpen, setCartOpen] = useState<boolean>(false);
@@ -309,8 +327,6 @@ export default function App() {
 
   // Directly handle individual "Add to Trunk" clicking action via WhatsApp API
   const handleDirectProductWA = (product: Product) => {
-    // Standard direct checkout message matching the user requirements:
-    // "Hi, is this available ?" with the name of the perfume not the cart
     const prodName = isAr && product.nameAr ? product.nameAr : product.name;
     const prodText = `Hi, is this available ? Name: ${prodName} (AED ${product.price})`;
     const encoded = encodeURIComponent(prodText);
@@ -476,7 +492,7 @@ export default function App() {
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover z-0"
-            poster="/hero-fallback.jpg"   // optional fallback image
+            poster="/hero-fallback.jpg"
           >
             <source src="/videos/hero-background.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -574,75 +590,54 @@ export default function App() {
           </div>
         </section>
 
-        {/* 8. Bespoke Custom Scent Atelier section */}
+        {/* 8. TikTok Social Section (replaces Atelier) */}
         <section id="bespoke" className="py-24 border-t border-gold/10 scroll-mt-12 relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Context details */}
-            <div className="text-right md:text-left" dir={isAr ? "rtl" : "ltr"}>
-              <span className="text-[10px] tracking-[0.35em] text-gold uppercase font-light mb-2 block">{t.navBespoke}</span>
-              <h2 className="font-serif text-3xl md:text-5xl tracking-wide text-white font-light uppercase leading-tight mb-6">
-                {t.bespokeTitle}
-              </h2>
-              <p className="font-garamond text-lg text-white/90 leading-relaxed mb-10 tracking-wide font-light">
-                {t.bespokeDesc}
-              </p>
+          <div className="text-center mb-16">
+            <span className="text-[10px] tracking-[0.35em] text-gold uppercase font-light mb-2 block">
+              {t.navBespoke}
+            </span>
+            <h2 className="font-serif text-3xl md:text-5xl tracking-wide text-white font-light uppercase mb-6">
+              {t.tiktokTitle}
+            </h2>
+            <p className="font-garamond text-lg text-white/80 max-w-2xl mx-auto leading-relaxed mb-10">
+              {t.tiktokDesc}
+            </p>
 
-              <div className="flex flex-col gap-6 max-w-xl">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gold/10 rounded-xl border border-gold/20 text-gold shrink-0">
-                    <Lock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm text-white font-medium tracking-wide mb-1">{t.exclusiveRightsTitle}</h4>
-                    <p className="text-xs text-white/60 font-light">{t.exclusiveRightsDesc}</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gold/10 rounded-xl border border-gold/20 text-gold shrink-0">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm text-white font-medium tracking-wide mb-1">{t.rareElementsTitle}</h4>
-                    <p className="text-xs text-white/60 font-light font-sans">{t.rareElementsDesc}</p>
-                  </div>
-                </div>
-              </div>
-              <button 
-                onClick={() => {
-                  triggerToast(t.vipBookingToast);
-                  // Dispatches booking enquiry details directly via WhatsApp
-                  const enquiry = isAr 
-                    ? `مرحباً رويال دان، أود حجز موعد استشارة وتصميم عطر شخصي مخصص في الأتيليه الخاص بكم.` 
-                    : `Hi Royal Dan, I would like to inquire regarding a bespoke scent session appointment in your atelier, Ajman UAE.`;
-                  const encoded = encodeURIComponent(enquiry);
-                  const waUrl = `https://wa.me/971562240144?text=${encoded}`;
-                  setTimeout(() => {
-                    window.open(waUrl, "_blank");
-                  }, 800);
-                }}
-                className="mt-10 px-8 py-4 bg-gold hover:bg-gold-light text-burgundy-dark font-medium rounded-full text-xs tracking-widest uppercase transition-all duration-300 pointer-events-auto"
-              >
-                {t.inquireBtn}
-              </button>
-            </div>
+            {/* Follow button */}
+            <a
+              href="https://www.tiktok.com/@royal_dan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-gold via-gold-light to-gold border border-gold/40 hover:bg-gold-light text-burgundy-dark font-medium rounded-full text-xs tracking-[0.25em] uppercase shadow-lg shadow-gold/5 hover:shadow-gold/15 transition-all duration-300 transform hover:scale-[1.02] mb-16"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+              </svg>
+              {t.tiktokFollowBtn}
+            </a>
+          </div>
 
-            {/* Visual Frame - Premium Aesthetic */}
-            <div className="relative aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden border border-gold/20 bg-burgundy-dark/80 group">
-              <div className="absolute inset-0 bg-radial-[circle_at_center,_transparent_40%,_rgba(7,2,4,0.95)_100%] z-10" />
-              <div className="absolute inset-0 flex flex-col justify-center items-center p-8 text-center z-20" dir={isAr ? "rtl" : "ltr"}>
-                <Diamond className="w-12 h-12 text-gold stroke-[0.75] mb-4 animate-spin-slow" />
-                <h3 className="font-serif text-2xl text-gold-light tracking-widest uppercase mb-2">{t.royalVaultTitle}</h3>
-                <p className="text-xs text-white/70 max-w-sm tracking-wider font-light italic font-garamond leading-relaxed">
-                  {t.royalVaultQuote}
-                </p>
-                <div className="mt-6 flex items-center gap-1.5 text-[9px] tracking-widest uppercase text-gold/60 border border-gold/20 px-3 py-1 bg-burgundy-dark/50 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
-                  {t.secureVaultLabel}
+          {/* Video embed grid – multiple videos */}
+          <div className="max-w-6xl mx-auto">
+            <span className="text-[10px] tracking-[0.35em] text-gold/60 uppercase font-light mb-6 block text-center">
+              {t.tiktokWatchLabel}
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {tiktokVideoIds.map((videoId) => (
+                <div
+                  key={videoId}
+                  className="relative rounded-2xl overflow-hidden border border-gold/20 bg-burgundy-dark/80 shadow-2xl"
+                  style={{ aspectRatio: '9/16', maxHeight: '600px' }}
+                >
+                  <iframe
+                    src={`https://www.tiktok.com/player/v1/${videoId}?music_info=1&description=1&autoplay=0`}
+                    className="w-full h-full border-0"
+                    allow="fullscreen"
+                    title={`Royal Dan TikTok Video ${videoId}`}
+                    loading="lazy"
+                  />
                 </div>
-              </div>
-              {/* Fallback pattern inside vault block */}
-              <div className="absolute inset-0 opacity-40 bg-[radial-gradient(#c9a96e_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+              ))}
             </div>
           </div>
         </section>
@@ -927,7 +922,6 @@ export default function App() {
             </div>
           )}
         </div>
-
 
         {/* 13. Absolute Toast Notification Panel */}
         <div className={`fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 pointer-events-none transition-all duration-500 ease-in-out ${
